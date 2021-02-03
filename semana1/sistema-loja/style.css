@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+    color: azure;
+
+}
+ 
+.social {
+    width: 100px;
+    height: 100px;
+    
+}
+
+footer {
+    text-align: center;
+    background-color: black;
+    color: azure;
+    padding: 20px;
+}
+
+button {
+    background-color: grey;
+    
+}
+
+.container {
+    background-color: blueviolet;
+    padding: 0.5%;
+    color: azure;
+    text-decoration: none;
+
+
+}
+
+ol li{
+    text-align: left;
+}
+
+h3 {
+    text-align: left;
+}
