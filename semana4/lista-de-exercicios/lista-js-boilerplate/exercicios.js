@@ -127,42 +127,77 @@ function segundoMaiorEMenor(array) {
    // buscando o valor máximo no array
    let max = Math.max(...array)
    // criando um array novo sem o valor máximo
-   const array2 = array.filter(element => element !== max)
+   const arrayMax = array.filter(element => element !== max)
    // procurando agora o valor máximo no novo array
-   let max2 = Math.max(...array2)
-   result[0]
-   console.log(array2)
-   console.log(max)
+   let max2 = Math.max(...arrayMax)
+   result[0] = max2
+
+   let min = Math.min(...array)
+   // criando um array novo sem o valor máximo
+   const arrayMin = array.filter(element => element !== min)
+   // procurando agora o valor máximo no novo array
+   let min2 = Math.min(...arrayMin)
+   result[1] = min2
+
+   return result
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
    // implemente sua lógica aqui
+   function compararNumeros(a, b) {
+      return a - b
+   }
+   //console.log('Ordenada com compararNumeros:', array.sort(compararNumeros));
+   return array.sort(compararNumeros)
 }
 
 // Exercício 12
 
 function filmeFavorito() {
    // implemente sua lógica aqui
+   const ObjFilme = {
+      nome: 'O Diabo Veste Prada',
+      ano: 2006,
+      diretor: 'David Frankel',
+      atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
+   }
+
+   return ObjFilme
 }
 
 // Exercício 13
 
 function imprimeChamada() {
    // implemente sua lógica aqui
+   let objeto = filmeFavorito()
+   let stringAtores = (objeto.atores).join(', ')
+   return `Venha assistir ao filme ${objeto.nome}, de ${objeto.ano}, dirigido por ${objeto.diretor} e estrelado por ${stringAtores}.`
 }
 
 // Exercício 14
 
 function criaRetangulo(lado1, lado2) {
    // implemente sua lógica aqui
+   const ObjRetangulo = {
+      largura: lado1,
+      altura: lado2,
+      perimetro: 2 * (lado1 + lado2),
+      area: lado1 * lado2
+   }
+   return ObjRetangulo
 }
 
 // Exercício 15
 
 function anonimizaPessoa(pessoa) {
    // implemente sua lógica aqui
+
+   return {
+      ...pessoa,
+      nome: 'ANÔNIMO'
+   }
 }
 
 // Exercício 16
@@ -174,35 +209,58 @@ const arrayDePessoas = [
    { nome: "Artur", idade: 89 }
 ]
 
+
 // Exercício 16, letra A
 
 function maioresDe18(arrayDePessoas) {
    // implemente sua lógica aqui
+   const novoArray = arrayDePessoas.filter((pessoa) => {
+      return pessoa.idade >= 18
+   })
+   return novoArray
 }
 
 // Exercício 16, letra B
 
 function menoresDe18(arrayDePessoas) {
    // implemente sua lógica aqui
+   const novoArray = arrayDePessoas.filter((pessoa) => {
+      return pessoa.idade < 18
+   })
+   return novoArray
 }
 
 // Exercício 17, letra A
 
 function multiplicaArrayPor2(array) {
    // implemente sua lógica aqui
+
+   return array.map(el => el * 2)
 }
 
 // Exercício 17, letra B
 
 function multiplicaArrayPor2S(array) {
    // implemente sua lógica aqui
+   const newArray = array.map(el => el * 2)
+   return (newArray.toString().split(','))
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
    // implemente sua lógica aqui
+   const newArray = array.map((num) => {
+      if (num % 2 === 0) {
+         return `${num} é par`
+      } else {
+         return `${num} é ímpar`
+      }
+   })
+
+   return newArray
 }
+
 
 // Exercício 18
 
@@ -217,15 +275,30 @@ const pessoas = [
 
 //Exercício 18, letra A
 
-function retornaPessoasAutorizadas(pessoas) {
+function retornaPessoasAutorizadas() {
    // implemente sua lógica aqui
+   let result = []
+   for (const el of pessoas) {
+      if (el.altura >= 1.5 && el.idade > 14 && el.idade < 60) {
+         result.push(el)
+      }
+   }
+   return result
 }
 
 
 // Exercício 18, letra B
 
-function retornaPessoasNaoAutorizadas(pessoas) {
+function retornaPessoasNaoAutorizadas() {
    // implemente sua lógica aqui
+   let result = []
+   for (const el of pessoas) {
+      if (el.altura < 1.5 || el.idade < 14 || el.idade > 60) {
+         result.push(el)
+      }
+   }
+   return result
+
 }
 
 //Exercício 19
@@ -237,9 +310,46 @@ const consultas = [
    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
 ]
 
-function retornaEmailConsulta(consultas) {
+function retornaEmailConsulta() {
    // implemente sua lógica aqui
+   return consultas.map((consulta) => {
+      let email = "Olá, "
+
+      if (!consulta.cancelada) {
+         if (consulta.genero === "feminino") {
+            email += "Sra. "
+         } else {
+            email += "Sr. "
+         }
+
+         email += consulta.nome + ". "
+         email += "Estamos enviando esta mensagem para "
+
+         if (consulta.genero === "feminino") {
+            email += "lembrá-la "
+         } else {
+            email += "lembrá-lo "
+         }
+
+         email += "da sua consulta no dia " + consulta.dataDaConsulta + ". "
+         email += "Por favor, acuse o recebimento deste-email."
+      } else {
+         if (consulta.genero === "feminino") {
+            email += "Sra. "
+         } else {
+            email += "Sr. "
+         }
+
+         email += consulta.nome + ". "
+         email += "Infelizmente sua consulta marcada para o dia "
+         email += consulta.dataDaConsulta + " foi cancelada. "
+         email += "Se quiser, pode entrar em contato conosco para remarcá-la."
+      }
+
+      return email
+   });
 }
+
 
 //Exercício 20
 
@@ -254,4 +364,13 @@ const contas = [
 
 function atualizaSaldo() {
    // implemente sua lógica aqui
+   contas.forEach((conta) => {
+
+      let total = 0
+      conta.compras.forEach((valor) => {
+         total += valor
+      })
+      conta.saldoTotal -= total
+   })
+   return contas
 }
