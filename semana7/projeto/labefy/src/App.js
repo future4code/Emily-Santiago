@@ -34,10 +34,13 @@ export default class App extends React.Component {
         <header className="App-header">
           <p>HEADER</p>
           <button onClick={this.changePage}>bananinha</button>
-          {this.renderPage()}
+
         </header>
 
         <body className="App-bory">
+          <div className="container">
+            {this.renderPage()}
+          </div>
         </body>
 
         <footer className="App-footer">

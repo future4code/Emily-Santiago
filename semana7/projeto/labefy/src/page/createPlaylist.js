@@ -33,8 +33,9 @@ export default class createPlaylist extends React.Component {
     render() {
         return (
             <div className="Container">
-                <p>CRIAR PLAYLIST</p>
-                <label>NOME PLAYLIST</label>
+                <h2>CREATE PLAYLIST</h2>
+                <hr/>
+                <p><label>PLAYLIST NAME</label></p>
                 <input onChange={this.handleName} value={this.state.name} />
                 <button onClick={this.createPlaylistLabefy}>ENVIAR</button>
             </div>
