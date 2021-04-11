@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MatchPage from "./components/pages/MatchPage";
 import ListMatchPage from "./components/pages/ListMatchPage";
-import "./styles.css";
+import "./App.css";
 import React from "react";
 import styled from "styled-components";
 

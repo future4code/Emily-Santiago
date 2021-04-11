@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-//import {XCircle} from @styled-icons/octicons/XCircle
+import { BsPeople, BsPeopleFill, BsCheck, BsXCircle, BsXCircleFill } from "react-icons/bs";
+
 
 const ListMatchPage = (prop) => {
     const [profile, setprofile] = useState("");
@@ -48,9 +49,7 @@ const ListMatchPage = (prop) => {
             <ContainerInfo>
                 <Header>
                     <Logo>ASTROMATCH</Logo>
-                    <button onClick={() => prop.page("match")}>
-                        Paguina de curtidas
-          </button>
+                    <BsPeople size="1.5em" onClick={() => prop.page("match")}></BsPeople>
                 </Header>
                 <hr />
                 <ImagemPerfil src={profile.photo} alt="Foto do perfil" />
@@ -63,14 +62,15 @@ const ListMatchPage = (prop) => {
                 </ContainerTextoPerfil>
             </ContainerInfo>
             <MenuLike>
-                <button onClick={() => ChoosePerson(false)}>X</button>
-                <button onClick={() => ChoosePerson(true)}>C</button>
+                <BsXCircle size="2em" color="red" onClick={() => ChoosePerson(false)}>X</BsXCircle>
+                <BsCheck size="2em" color="green" onClick={() => ChoosePerson(true)}>C</BsCheck>
             </MenuLike>
         </div>
     );
 };
 
 export default ListMatchPage;
+
 
 const ContainerInfo = styled.div`
   background-color: white;

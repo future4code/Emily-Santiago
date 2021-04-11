@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { AiOutlineHome, AiFillHome } from "react-icons/ai";
+import { BsTrash, BsTrashFill } from "react-icons/bs";
 
 const MatchPage = (prop) => {
     const [matchList, setMatchList] = useState([]);
@@ -40,7 +42,7 @@ const MatchPage = (prop) => {
     return (
         <div>
             <Background>
-                <button onClick={() => prop.page("listMatch")}>Lista de matchs</button>
+                <AiOutlineHome size="1.5em" onClick={() => prop.page("listMatch")}>Lista de matchs</AiOutlineHome>
                 {matchList.map((match) => {
                     return (
                         <div key={match.id}>
@@ -51,7 +53,7 @@ const MatchPage = (prop) => {
                         </div>
                     );
                 })}
-                <button onClick={() => resetMatchs()}>RESET</button>
+                <BsTrash size="1.5em" onClick={() => resetMatchs()}></BsTrash>
             </Background>
         </div>
     );
